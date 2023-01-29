@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User log</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.js"
+      integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+          var value = $(this).val().toLowerCase();
+          $("#tableBody tr").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+          });
+        });
+        $("th:nth-child(2)").click(function () {
+          var table = $(this).parents("table").eq(0);
+          var rows = table
+            .find("tr:gt(0)")
+            .toArray()
+            .sort(comparer($(this).index()));
+          this.asc = !this.asc;
+          if (!this.asc) {
+            rows = rows.reverse();
+          }
+          for (var i = 0; i < rows.length; i++) {
+            $(rows[i])
+              .find("td:first")
+              .text(i + 1); //update the s.no td in each sorted row
+            table.append(rows[i]);
+          }
+        });
+        function comparer(index) {
+          return function (a, b) {
+            var valA = getCellValue(a, index),
+              valB = getCellValue(b, index);
+            return $.isNumeric(valA) && $.isNumeric(valB)
+              ? valA - valB
+              : valA.toString().localeCompare(valB);
+          };
+        }
+        function getCellValue(row, index) {
+          return $(row).children("td").eq(index).text();
+        }
+      });
+    </script>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div id="msg" class="msg"></div>
+    <div class="container">
+      <div class="formRow">
+        <div class="column"><h1>User Form</h1></div>
+        <form action="">
+          <div class="column">
+            <input type="text" id="firstname" placeholder="Firstname"/>
+          </div>
+          <div class="column">
+            <input type="text" id="lastname" placeholder="Lastname"/>
+          </div>
+          <div class="column">
+            <input type="text" id="contact" placeholder="Contact Number"/>
+          </div>
+          <div class="column">
+            <button type="submit" id="save" onclick="handleUserData()">Save</button>
+          </div>
+          
+        </form>
+      </div>
+      <div class="tableRow">
+        <input type="text" id="myInput" placeholder="search by name" />
+        <table id="tableId">
+          <thead>
+            <tr>
+              <th>SN.</th>
+              <th>Name</th>
+              <th>Contact</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+  <script src="index.js"></script>
+</html>

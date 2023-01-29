@@ -1,0 +1,148 @@
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100%;
+}
+
+.container {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.msg {
+  background-color: rgb(14, 151, 112);
+  color: whitesmoke;
+  width: 100%;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: bolder;
+  position: fixed;
+  top: 0;
+}
+
+.column {
+  width: 85%;
+  margin: auto;
+}
+.column input {
+  width: 100%;
+  margin: 0.3rem;
+  padding: 0.4rem;
+}
+
+.formRow {
+  width: 50%;
+  background-color: rebeccapurple;
+  padding: 0.8rem;
+  border-radius: 12px;
+}
+
+.formRow h1 {
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  color: bisque;
+}
+
+.tableRow {
+  margin-top: 2rem;
+}
+
+.tableRow input {
+  width: 60%;
+  padding: 0.4rem;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+thead tr {
+  background-color: #009879;
+  color: whitesmoke;
+  text-align: left;
+  font-weight: bold;
+}
+
+thead tr th:nth-child(2):hover {
+  background-color: #05604e;
+  cursor: pointer;
+}
+
+th,
+td {
+  padding: 0.6rem 1rem;
+}
+
+tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+
+tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+button {
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: rgb(30, 243, 97);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  margin: 0.2rem;
+  padding: 0.3rem 0.6rem;
+}
+
+.delbtn {
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: rgb(212, 33, 33);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  margin: 0.2rem;
+  padding: 0.3rem 0.6rem;
+  text-decoration: none;
+}
+
+.delbtn:hover {
+  background-color: rgb(95, 11, 11);
+}
+button:hover {
+  background-color: rgb(8, 172, 60);
+}
+
+@media screen and (max-width: 600px) {
+  .formRow {
+    width: 80%;
+  }
+  .tableRow{
+    padding: 1rem;
+  }
+  .tableRow input{
+    margin-left: 2rem;
+  }
+  table{
+    margin: 1rem;
+    min-width: 250px;
+  }
+}
